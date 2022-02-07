@@ -1,0 +1,19 @@
+<div class="form-group">
+    <label [for]="id"><span class="text-danger" [hidden]="!isRequired">*</span> {{label}}</label>
+    <input type="text" class="form-control" *ngIf="lineType == 'single'"
+           [id]="id"
+           [disabled]="disabled"
+           (blur)="onTouched()"
+           (change)="addEvent($event)">
+    <textarea [id]="id"  *ngIf="lineType == 'multiple'"
+              [rows]="rows"
+              class="form-control"
+              [disabled]="disabled"
+              (blur)="onTouched()"
+              (change)="addEvent($event)"></textarea>
+  
+    <small class="text-danger" *ngIf="isRequriedFieldInvalid()">{{errorMessageRequired}}</small>
+    <small class="text-danger" *ngIf="!isRequriedFieldInvalid() && isMinLengthFieldInvalid()">{{errorMessageMinLength}}</small>
+  </div>
+  <div [hidden]="true">some infos: touched {{ this.touched}}
+  </div>
