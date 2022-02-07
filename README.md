@@ -2,14 +2,14 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
-Created a number input for German.
+We created a numeric input for Germany.
 
 For example, 
-When user enter '14,5', the value will be 14.5
+If a user enters '14,5', the value will be 14.5.
 
-We used the custome number input in adding two double numbers.
-Two numbers are 450.234 and 254.12 initially.
-You can modify the numbers as you want.
+The custom number input is used in summing up two double numbers.
+The two numbers are initially 450.234 and 254.12.
+You can modify the numbers as you like.
 
 ## Development server
 
