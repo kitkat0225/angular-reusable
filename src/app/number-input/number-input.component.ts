@@ -43,7 +43,7 @@ export class NumberInputComponent implements OnInit, AfterViewInit, ControlValue
   @Input() id = 'numberInput';
   @Input() errorMessageRequired = '';
   @Input() isRequired = false;
-  @Input() locale = 'de';
+  @Input() lang = 'de';
   @Input() value = 0.0;
 
   @Output() valueChange: EventEmitter<any> = new EventEmitter();
@@ -84,7 +84,7 @@ export class NumberInputComponent implements OnInit, AfterViewInit, ControlValue
 
   onChange: any = () => {
     let result = this.stringVal;
-    if (this.locale === 'de') {
+    if (this.lang === 'de') {
       result = result.replace(',', '.');
     }
     this.valueChange.emit(Number(result));
@@ -134,13 +134,13 @@ export class NumberInputComponent implements OnInit, AfterViewInit, ControlValue
   }
 
   setStringVal() {
-    if (this.locale === 'de') {
+    if (this.lang === 'de') {
       this.stringVal = this.value.toString().replace('.', ',');
     }
   }
 
   _keyUp(event: any) {
-    const pattern = this.locale === 'de' ? this.germanPattern : this.generalPattern;
+    const pattern = this.lang === 'de' ? this.germanPattern : this.generalPattern;
     const keyVal = event.key;
     
     if (keyVal === 'Enter') {
@@ -164,11 +164,11 @@ export class NumberInputComponent implements OnInit, AfterViewInit, ControlValue
     if (!pattern.test(keyVal)) {
       event.preventDefault();
     } else {
-      if (keyVal === ',' && this.locale === 'de' && this.stringVal.indexOf(',') !== -1) {
+      if (keyVal === ',' && this.lang === 'de' && this.stringVal.indexOf(',') !== -1) {
         event.preventDefault();
       }
 
-      if (keyVal === '.' && this.locale !== 'de' && this.stringVal.indexOf('.') !== -1) {
+      if (keyVal === '.' && this.lang !== 'de' && this.stringVal.indexOf('.') !== -1) {
         event.preventDefault();
       }
     }
