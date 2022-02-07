@@ -2,6 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
+Created a number input for German.
+
+For example, 
+When user enter '14,5', the value will be 14.5
+
+We used the custome number input in adding two double numbers.
+Two numbers are 450.234 and 254.12 initially.
+You can modify the numbers as you want.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
