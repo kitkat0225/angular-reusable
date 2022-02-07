@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'reuse';
+
+  numVal1 = 450.234;
+  numVal2 = 254.12;
 }
