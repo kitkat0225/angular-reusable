@@ -1,0 +1,13 @@
+<div class="form-group">
+    <label [for]="id"><span class="text-danger" [hidden]="!isRequired">*</span> {{ label }}</label>
+    <input type="text" class="form-control"
+        [(ngModel)]="stringVal"
+        [id]="id"
+        [disabled]="disabled"
+        (blur)="onTouched()"
+        (change)="onChange()"
+        (keydown)="_keyUp($event)">
+    <small class="text-danger" *ngIf="isRequriedFieldInvalid()">{{ errorMessageRequired }}</small>
+</div>
+<div [hidden]="true">some infos: touched {{ this.touched }}
+</div>
