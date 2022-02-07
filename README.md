@@ -11,6 +11,10 @@ The custom number input is used in summing up two double numbers.
 The two numbers are initially 450.234 and 254.12.
 You can modify the numbers as you like.
 
+## NPM Install
+
+Run `npm install` before you run project.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
