@@ -79,6 +79,7 @@ export class NumberInputComponent implements AfterViewInit, ControlValueAccessor
     let result = this.stringVal;
     if (!this.stringVal) {
       result = '0.0';
+      this.stringVal = '0';
     }
     if (this.lang === 'de') {
       result = result.replace(',', '.');
