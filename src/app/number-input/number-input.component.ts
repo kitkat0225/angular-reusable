@@ -3,10 +3,7 @@ import {
   Component,
   forwardRef,
   Injector,
-  Input,
-  Output,
-  OnInit,
-  EventEmitter } from '@angular/core';
+  Input} from '@angular/core';
 
 import {
   AbstractControl,
@@ -33,10 +30,10 @@ import { NGXLogger } from 'ngx-logger';
       provide: NG_VALIDATORS,
       useExisting: forwardRef(() => NumberInputComponent),
       multi: true
-    }
-  ]
+    },
+  ],
 })
-export class NumberInputComponent implements OnInit, AfterViewInit, ControlValueAccessor, Validator {
+export class NumberInputComponent implements AfterViewInit, ControlValueAccessor, Validator {
 
   @Input() label = '';
   @Input() disabled = false;
@@ -46,8 +43,6 @@ export class NumberInputComponent implements OnInit, AfterViewInit, ControlValue
   @Input() lang = 'de';
   @Input() value = 0.0;
 
-  @Output() valueChange: EventEmitter<any> = new EventEmitter();
-  
   stringVal = '';
   touched = false;
   generalPattern = /[0-9\.\-\+]/;
@@ -56,17 +51,12 @@ export class NumberInputComponent implements OnInit, AfterViewInit, ControlValue
   constructor(
     private logger: NGXLogger,
     private inj: Injector
-  ) { }
-
-  ngOnInit(): void {
-    this.setStringVal();
-
+  ) {
     if (!this.errorMessageRequired) {
       this.errorMessageRequired = `"${this.label}" muss ausgefüllt werden.`;
     }
   }
 
-  
   ngAfterViewInit(): void {
     const outerControl = this.inj.get(NgControl).control;
     if (outerControl) {
@@ -82,13 +72,20 @@ export class NumberInputComponent implements OnInit, AfterViewInit, ControlValue
   onTouched: any = () => {
   };
 
-  onChange: any = () => {
+  onChange: any = (_: any) => {
+  };
+
+  onInputChange = () => {
     let result = this.stringVal;
+    if (!this.stringVal) {
+      result = '0.0';
+    }
     if (this.lang === 'de') {
       result = result.replace(',', '.');
     }
-    this.valueChange.emit(Number(result));
-  };
+    this.value = Number(result);
+    this.onChange(this.value);
+  }
 
   onValidatorChangeFn: any = () => {
   };
@@ -108,13 +105,15 @@ export class NumberInputComponent implements OnInit, AfterViewInit, ControlValue
   writeValue(obj: any): void {
     if (obj !== undefined) {
       this.value = obj;
-      this.setStringVal();
       this.onTouched();
 
       if (this.onValidatorChangeFn) {
         this.onValidatorChangeFn();
       }
+    } else {
+      this.value = 0;
     }
+    this.setStringVal();
   }
 
   registerOnValidatorChange?(fn: () => void): void {
@@ -142,7 +141,7 @@ export class NumberInputComponent implements OnInit, AfterViewInit, ControlValue
   _keyUp(event: any) {
     const pattern = this.lang === 'de' ? this.germanPattern : this.generalPattern;
     const keyVal = event.key;
-    
+
     if (keyVal === 'Enter') {
       this.onChange();
     }

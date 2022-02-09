@@ -7,12 +7,16 @@ import { LoggerModule, NgxLoggerLevel } from "ngx-logger";
 import { AppComponent } from './app.component';
 import { TextInputComponent } from './text-input/text-input.component';
 import { NumberInputComponent } from './number-input/number-input.component';
+import { NumberInputTestComponent } from './number-input-test/number-input-test.component';
+import { CounterComponent } from './counter/counter.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TextInputComponent,
-    NumberInputComponent
+    NumberInputComponent,
+    NumberInputTestComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule,

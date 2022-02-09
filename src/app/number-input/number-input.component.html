@@ -5,7 +5,7 @@
         [id]="id"
         [disabled]="disabled"
         (blur)="onTouched()"
-        (change)="onChange()"
+        (change)="onInputChange()"
         (keydown)="_keyUp($event)">
     <small class="text-danger" *ngIf="isRequriedFieldInvalid()">{{ errorMessageRequired }}</small>
 </div>
