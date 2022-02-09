@@ -17,7 +17,6 @@ export class NumberInputTestComponent implements OnInit {
     name: [''],
     firstNumber: 12.5,
     secondNumber: 1,
-    counter: 0
   }, {updateOn: 'submit'});
 
 
