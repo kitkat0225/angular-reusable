@@ -1,0 +1,45 @@
+<div class="card" xmlns="http://www.w3.org/1999/html">
+    <div class="card-header">
+      <h4 class="card-title">NumberBox - Test-Area</h4>
+      <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+    </div>
+    <div class="card-body">
+      <div class="card-block">Die NumberBox Komponente kann statt input type text/number verwendet werden.<br/>
+        [isRequired] verwenden, da ansonsten der string und nicht der boolean value verwendet wird
+      </div>
+    </div>
+  </div>
+  
+  <section id="action-form-layout">
+    <form [formGroup]="editForm" (ngSubmit)="onSubmit()" autocomplete="off">
+      <div class="row match-height">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-content">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-4">
+                    <app-number-input lang="de" id="firstNumber" label="Eine Zahl" formControlName="firstNumber"
+                                      [isRequired]="true"></app-number-input>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-4">
+                    <app-number-input lang="de" id="secondNumber" label="Zweite Zahl" formControlName="secondNumber"
+                                      [isRequired]="false"></app-number-input>
+                  </div>
+                </div>
+                <app-text-input label="Eine Zeile / Pflicht" formControlName="name" id="name" [isRequired]="true"
+                                lineType="single"></app-text-input>
+                <app-counter formControlName="counter"></app-counter>
+                <button type="submit" class="btn btn-primary mr-2"><i class="ft-check-square mr-1"></i>Speichern
+                </button>
+              </div>
+            </div>
+          </div> <!-- /card -->
+        </div>
+      </div>
+      <pre>{{ editForm.value | json }}</pre>
+    </form>
+  </section>
+  
